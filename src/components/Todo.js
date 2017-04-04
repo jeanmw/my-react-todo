@@ -7,8 +7,7 @@ class Todo extends Component {
         //if we see this console.log, we know that Todo-props are being
         // passed into TodosContainer, and being set as the
         // TodosContainer-state, and then trickling down as props to
-        // the Todo component. WHATttttt argh
-        // this is broken down below
+        // the Todo component. 
         console.log(`${this.props.todo.body} is being edited`);
         return (
           <TodoForm
