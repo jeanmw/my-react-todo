@@ -15,7 +15,7 @@ class TodosContainer extends Component {
     }
     fetchData() {
         TodoModel.all().then((res) => {
-            this.setState({todos: res.data.todo, todo: ''})
+            this.setState({todos: res.data.todos, todo: ''})
         })
     }
     createTodo(todo) {
@@ -39,12 +39,10 @@ class TodosContainer extends Component {
     }
     updateTodo(todoBody) {
         var todoId = this.state.editingTodoId
-        console.log("todoId is", todoId)
-        TodoModel.update(todoId, todoBody).then(function(res) {
-            function isUpdatedTodo(todo) {
-                return todo._id === todoId;
-            }
-            console.log("updating")
+        function isUpdatedTodo(todo) {
+            return todo._id === todoId;
+        }
+        TodoModel.update(todoId, todoBody).then((res) => {
             let todos = this.state.todos
             todos.find(isUpdatedTodo).body = todoBody
             this.setState({todos: todos, editingTodoId: null, editing: null})
